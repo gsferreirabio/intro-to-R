@@ -1,0 +1,39 @@
+---
+title: "Getting help"
+---
+
+The first place to get help with R is the [Comprehensive R Archive Network](http://cran.r-project.org/), where you can find many resources about R, such as manuals and FAQs, and also general announcements from the developers.
+
+Directly in RStudio you can open the Help page (on the Help tab, usually on the bottom right panel) by running "?" followed by the name of the function or package:
+
+```{r, eval = FALSE}
+?read.table
+```
+
+If you cannot remember the exact name of a function, but remember its subject, you can use the help.search() function passing what you remember as an argument.
+
+```{r, eval = FALSE}
+help.search("csv")  ## then use ? read.table for more precise info
+```
+
+The function find() finds which package a given function is in (more on packages and functions later); apropos() returns the objects and functions that match the argument you pass to it; example() and demo() take function names as arguments and are useful to learn how those functions work.
+
+```{r, eval = FALSE}
+# Try using those functions
+find("max")
+
+apropos("lm")
+
+example(lm)
+demo(graphics)
+
+```
+
+Finally, knowing the version of R you are using and how to cite it (do not forget to cite it!) are always useful and can be done as follows:
+```{r}
+version
+
+citation()
+
+```
+

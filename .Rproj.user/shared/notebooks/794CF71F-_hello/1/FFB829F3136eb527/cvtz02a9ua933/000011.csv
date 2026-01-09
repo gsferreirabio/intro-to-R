@@ -1,0 +1,10 @@
+"0","#| label: load-packages"
+"0","#| include: false"
+"0",""
+"0","library(tidyverse)"
+"2","Error: package or namespace load failed for ‘tidyverse’:
+ .onAttach failed in attachNamespace() for 'tidyverse', details:
+  call: NULL
+  error: package or namespace load failed for ‘tidyr’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘purrr’
+"

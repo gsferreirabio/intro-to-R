@@ -1,0 +1,29 @@
+{
+  "index.qmd": {
+    "index.html": "cbdc9f69"
+  },
+  "about.qmd": {
+    "about.html": "06ded00e"
+  },
+  "functions.qmd": {
+    "functions.html": "9f98d86a"
+  },
+  "gettinghelp.qmd": {
+    "gettinghelp.html": "0b12aa6f"
+  },
+  "objects.qmd": {
+    "objects.html": "9efd8399"
+  },
+  "Rascalculator.qmd": {
+    "Rascalculator.html": "3d919a83"
+  },
+  "syntax.qmd": {
+    "syntax.html": "1a8f43d8"
+  },
+  "yourfunction.qmd": {
+    "yourfunction.html": "428cb552"
+  },
+  "quarto.qmd": {
+    "quarto.html": "cb4ea000"
+  }
+}

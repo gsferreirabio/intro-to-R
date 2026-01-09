@@ -1,0 +1,60 @@
+---
+title: "Objects and variables"
+---
+
+Of course R is more than a simple calculator. The great benefit of using such a language is being able to store the results of an operation into a variable (or an *object*) that can be used later in some subsequent operation or passed as an argument in a function. In R you can do that using either "<-" (which passes the value from the right to the left; shortcut: *Alt* + *-*) or the "=". They have the same effect, but keeping the usage of "=" for operations or passing a value as an argument and "<-" for storing values in an object is usually better seen. Whatever you choose to use, keep it consistent.
+
+An **object** in R is stored in the environment and can be accessed by just typing its name. An object can store anything, a number, a character string, a vector or list, a matrix or data frame, even functions. Keep in mind that **R is case-sensitive**! The *class* of an object can be checked using the class() function.
+
+```{r}
+Y = 2
+y = 1
+Y == y
+class(y)
+
+answer = "Y is not the same as y"
+answer
+class(answer)
+
+sequence <- 1:10
+sequence
+class(sequence)
+
+class(class)
+
+```
+
+Operations can be done with objects instead of numbers (such as Y == y above). You can also combine objects into different objects. For example, to create a matrix (2-dimensions object), you can combine two vectors (1D objects) using functions like **rbind** or **cbind** (check their *Help* pages using *?rbind*. Check also the function *c()*).
+```{r}
+vec.1 <- c(2, 4, 6)
+vec.2 <- c(3, 5, 7)
+matrix.1 <- cbind(vec.1, vec.2)  ## binds by column
+matrix.1
+matrix.2 <- rbind(vec.1, vec.2)  ## binds by row
+matrix.2
+
+vec.1 + vec.2
+vec.1 > 4
+```
+
+There is another class of objects in R called data frames that are used a lot by many functions due to its capacity of storing different data types and to have your dimensions changed after creation. For example, you cannot have one column with character strings and another with numbers in a matrix (it will convert the columns to the same type), but you can have that with a data frame. You can access single columns, rows or cells by using the row and/or column number between square brackets.
+
+
+```{r}
+vec.3 = c("A", "B", "C")
+cbind(vec.3, vec.2)
+df <- data.frame(vec.3, vec.2)
+df
+df[1,1]  ## row 1, column 1
+df[,2]  ## column 2
+
+```
+
+A nice feature of a data frame is giving names to its columns and then calling them using the *$* sign.
+```{r}
+colnames(df) <- c("characters", "numbers")
+df$characters
+df$numbers
+
+```
+
