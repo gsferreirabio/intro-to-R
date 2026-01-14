@@ -1,4 +1,4 @@
-# intro-to-R
+# Intro to R
 
 This is the repository for the Introduction to R course.
 
