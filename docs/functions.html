@@ -194,8 +194,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Writing your functions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subsetting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subsetting</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plotBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of plotting in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./boxplotsHistograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boxplots and histograms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./colors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colors in plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./savingPlots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Saving plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Maps in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylog.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phylogenies in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating documents with R</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -232,8 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Using functions is a great way to generalize and automatize processes. R comes with several basic functions implemented in packages (which are basic collections of functions and objects) such as <em>stats</em> and <em>graphics</em>. Functions will usually take arguments provided by the user based on which they will perform an action. It is always important to read the Help page of a function to learn which arguments are possible and how to use them.</p>
-<p>For example, you can use a function to generate a sequence more complex than just by using 1:10 using the arguments <em>by</em> and <em>length.out</em> of the function <em>seq</em>:</p>
+<p>Using functions is a great way to generalize and automatize processes. R comes with several basic functions implemented in packages (which are basic collections of functions and objects) such as <code>stats</code> and <code>graphics</code>. Functions will usually take arguments provided by the user based on which they will perform an action. It is always important to read the Help page of a function to learn which arguments are possible and how to use them.</p>
+<p>For example, you can use a function to generate a sequence more complex than just by using 1:10 using the arguments <code>by</code> and <code>length.out</code> of the function <code>seq()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)  <span class="do">## increment the sequence by 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -244,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1]  1.00  5.75 10.50 15.25 20.00</code></pre>
 </div>
 </div>
-<p>A sequence can also be created by repetitions using the function <em>rep</em> and defining arguments as <em>each</em> (each element is repeated <em>x</em> times) and <em>times</em> (the sequence is repeated <em>x</em> times).</p>
+<p>A sequence can also be created by repetitions using the function <code>rep()</code> and defining arguments as <code>each</code> (each element is repeated <em>x</em> times) and <code>times</code> (the sequence is repeated <em>x</em> times).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -259,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "cat"   "dog"   "dog"   "mouse" "mouse" "mouse"</code></pre>
 </div>
 </div>
-<p>We saw before that a logical operation can be made for each element in a vector using logical operators. If you want to check whether <em>all</em> or <em>any</em> elements fit a certain criterium you can use the functions:</p>
+<p>We saw before that a logical operation can be made for each element in a vector using logical operators. If you want to check whether <code>all()</code> or <code>any()</code> elements fit a certain criterium you can use the functions:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vec<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(vec<span class="fl">.1</span><span class="sc">&lt;</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -337,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>We saw before how to see the class of an object using the <em>class()</em> function, but we can also check whether an object is from a specific class using the group of functions “is.X”:</p>
+<p>We saw before how to see the class of an object using the <code>class()</code> function, but we can also check whether an object is from a specific class using the group of functions <em>is.X</em>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -348,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
-<p><strong>Factor</strong> is an object type that represent categorical variables. They have a determined number <em>levels</em> (categories), and some functions can be used to check those.</p>
+<p><code>Factor</code> is an object type that represent categorical variables. They have a determined number <em>levels</em> (categories), and some functions can be used to check those.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>color.names <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"white"</span>, <span class="st">"pink"</span>, <span class="st">"pink"</span>, <span class="st">"white"</span>, <span class="st">"white"</span>))</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(color.names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -373,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<p>Let’s say you want to calculate the mean value of a sequence that contains NA. This will return an NA:</p>
+<p>Let’s say you want to calculate the mean value of a sequence that contains <code>NA</code>. This will return an <code>NA</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -381,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
-<p>So, you need to deal with this NA before obtaining this mean value. You can identify its position and manually remove it, but this becomes impracticable as the dimensions of an object increase. You can replace the NA by another value, using the ifelse() function, but that will change the original data. Alternatively, you can omit the NAs from the calculation, either before (using the function na.omit()) or with an argument implemented in the mean() function:</p>
+<p>So, you need to deal with this <code>NA</code> before obtaining this mean value. You can identify its position and manually remove it, but this becomes impracticable as the dimensions of an object increase. You can replace the <code>NA</code> by another value, using the <code>ifelse()</code> function, but that will change the original data. Alternatively, you can omit the <code>NAs</code> from the calculation, either before (using the function <code>na.omit()</code>) or with an argument implemented in the <code>mean()</code> function:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1. Manually removing NAs. Try to understand the series of code here</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(y)  <span class="do">## tells you which positions are NAs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -438,7 +508,7 @@ attr(,"class")
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Installing a package does not make it readly available, they first need to be loaded on the session.</p>
+<p>Installing a package does not make it readily available, they first need to be loaded on the session.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

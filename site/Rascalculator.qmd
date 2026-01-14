@@ -24,7 +24,7 @@ You can pass multiple operations in a single line of code, but keep in mind that
 3^(2/2)
 ```
 
-R deals with large numbers using the *e* character followed by the number of positions the decimal point will move. If the number is positive, the decimal point moves to the right; if negative it moves to the left.
+R deals with large numbers using the `e` character followed by the number of positions the decimal point will move. If the number is positive, the decimal point moves to the right; if negative it moves to the left.
 
 ```{r}
 1.2e3 
@@ -33,7 +33,7 @@ R deals with large numbers using the *e* character followed by the number of pos
 
 ### Logical operators
 
-Boolean algebra (operations that return *True* or *False* values) can be done using the == (double equal signs = "*equals to*") and != ("not" operator (!) followed by equal sign = "*differs from*") logical operators:
+Boolean algebra (operations that return `TRUE` or `FALSE` values) can be done using the `==` (double equal signs = "*equals to*") and `!=` ("not" operator (!) followed by equal sign = "*differs from*") logical operators:
 
 ```{r}
 1 == 1
@@ -42,14 +42,14 @@ Boolean algebra (operations that return *True* or *False* values) can be done us
 1 != 2
 ```
 
-The returned values from Boolean operations are TRUE and FALSE (always in capital letters), which can also be expressed by the single capital letters T and F, respectively.
+The returned values from Boolean operations are `TRUE` and `FALSE` (always in capital letters), which can also be expressed by the single capital letters `T` and `F`, respectively.
 
 ```{r}
 T == TRUE
 F == FALSE
 ```
 
-"Greater than" (>), "smaller than or equal to" (<=), "and" (&), "or" (|) are all logical operators that can be used in R.
+"Greater than" (`>`), "smaller than or equal to" (`<=`), "and" (`&`), "or" (`|`) are all logical operators that can be used in R.
 
 ```{r}
 1 & 2 > 3  ## 1 and 2 are greater than 0
@@ -59,13 +59,13 @@ F == FALSE
 
 ### Additional signs
 
-Two dots (:) can be used to create a sequence.
+Two dots (`:`) can be used to create a sequence.
 ```{r}
 1:10
 2.5:5.5
 ```
 
-And the modulo operation (the remainder of a division) can be done using "%%":
+And the modulo operation (the remainder of a division) can be done using `%%`:
 
 ```{r}
 2%%2
@@ -75,4 +75,4 @@ And the modulo operation (the remainder of a division) can be done using "%%":
 ```
 ### Missing and null values 
 
-Missing values in R are represented by the special object **NA** ("not available"). NAs reserve space in a vector, which is important to keep the original dimensions, but they can be very annoying when using some functions. We will see how to identify and deal with them in the [Functions](functions.qmd) section. On the other hand, the special object **NULL** represents the absence of a value and indicates that an object contains no data. It can be used for example to create an object that will be fill with values later in a function to to remove the content of a preexisting object.
+Missing values in R are represented by the special object `NA` ("not available"). `NAs` reserve space in a vector, which is important to keep the original dimensions, but they can be very annoying when using some functions. We will see how to identify and deal with them in the [Functions](functions.qmd) section. On the other hand, the special object `NULL` represents the absence of a value and indicates that an object contains no data. It can be used for example to create an object that will be fill with values later in a function to to remove the content of a preexisting object.

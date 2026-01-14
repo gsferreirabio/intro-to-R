@@ -2,7 +2,7 @@
 title: "Writing your functions"
 ---
 
-Maybe you want to automatize a process for which you cannot find an already written function, or maybe you want to customize a function to your needs. R enables you to write your own functions using  *function()* and defining the set of steps that will be performed by this function. Of course, they can be stored in objects, which will then be treated as the names of your functions.
+Maybe you want to automatize a process for which you cannot find an already written function, or maybe you want to customize a function to your needs. R enables you to write your own functions using  `function()` and defining the set of steps that will be performed by this function. Of course, they can be stored in objects, which will then be treated as the names of your functions.
 
 Let's create a function to calculate the median of a distribution. The **median** is a value that separates the distribution in half. In a distribution with an odd number of elements, the element in the center of this distribution (when sorted from minimum to maximum or the opposite) is the median.
 ```{r}
@@ -11,18 +11,19 @@ length(odd.dist)/2
 # because this is not an integer, we will round it upwards
 odd.dist[ceiling(length(odd.dist)/2)]
 ```
+
 This becomes a bit more difficult when the distribution has an even number of elements, because there is no single position at the middle. What is done then is to calculate the average between the values in the two positions before and after the center of the distribution.
 ```{r}
 even.dist <- c(2, 4, 6, 8)
 median(even.dist)  
 ```
+
 Five is not a number in the even.dist, but is the mean between 4 and 6.
 Thus, a function to calculate the mean will require four steps:
 1. order the sequence
 2. check whether the sequence is even or odd
 3a. if it is odd, select the number in the center position
 3b. if it is even, calculate the mean between the numbers before and after the center position
-
 
 It is always useful to check if each step in your code successfully runs by itself. Let's do this:
 ```{r}
@@ -44,7 +45,8 @@ aft <- even.dist[1 + length(even.dist)/2]
 (bef + aft)/2
 
 ```
-Now we can put all those steps together in a single function and use it to calculate the median of the *new.seq* and the *even.dist* objects.
+
+Now we can put all those steps together in a single function and use it to calculate the median of the `new.seq` and the `even.dist` objects.
 ```{r}
 calculate.median <- 
   function(x) {
@@ -60,7 +62,8 @@ calculate.median(new.seq)
 calculate.median(even.dist)
 
 ```
-Finally, you might want to save this function so that you can load it in another script, without the need to rewriting it all over. To *save* and *load* a function (or any object, actually), use:
+
+Finally, you might want to save this function so that you can load it in another script, without the need to rewriting it all over. To `save()` and `load()` a function (or any object, actually), use:
 ```{r, eval = FALSE}
 save(calculate.median, file = "calculate.median.R")
 

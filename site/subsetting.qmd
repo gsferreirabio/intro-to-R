@@ -1,0 +1,59 @@
+---
+title: "Subsetting"
+---
+
+Subsetting is a way to extract parts of an object based on some condition. This is very useful when working with large datasets, as it allows you to focus on specific subsets of data that meet certain criteria. Let's load the *size-meas.csv* dataset to illustrate this. We can use `head()` to inspect it's contents:
+
+```{r}
+#| echo: false
+setwd("d:/R Projects/Intro-to-R/datasets/Ferreira_etal-2024")
+size.meas <- read.csv("size-meas.csv", sep = ",", header = TRUE)
+```
+```{r}
+#| echo: true
+head(size.meas)
+```
+
+This dataset contains measurements of different specimens of turtles as well as information about their taxonomy. Let's check how many different **Clades** are sampled in this dataset and how many Chelidae turtles are included. We can easily do that using the function `unique()` but we can also look at how many levels are in that column treating it as a factor.
+```{r}
+unique(size.meas$Clade)
+levels(as.factor(size.meas$Clade))
+length(size.meas$Clade[which(size.meas$Clade == "Chelidae")])
+```
+When we checked how many lines in that dataframe are identified as *Chelidae* in their *Clade* column, we made a subset of that dataframe.  To subset data in R, you can use square brackets `[]` to specify the rows and columns you want to extract. The general syntax is `data[rows, columns]`. If you leave either the rows or columns section blank, R will return all rows or columns, respectively. For example, to extract all rows for the *Clade* column, you can use:
+
+```{r}
+Clade <- size.meas[, "Clade"]
+head(Clade, n = 20)  ## show first 20 elements
+summary(Clade)
+```
+
+Another way to subset data is by using logical conditions or the `which()` and `subset()` functions. For example, to extract all rows where the *Clade* is "Chelidae", you can use:
+
+```{r}
+chelidae.logical <- size.meas[size.meas$Clade == "Chelidae",]
+head(chelidae.logical)
+
+chelidae.which <- size.meas[which(size.meas$Clade == "Chelidae"), ]
+head(chelidae.which)
+
+chelidae.subset <- subset(size.meas, Clade == "Chelidae")
+head(chelidae.subset)
+
+identical(chelidae.logical, chelidae.which)  ## check if they are the same
+identical(chelidae.logical, chelidae.subset)  
+```
+There are other functions that can help working with subsets of data. For example, you can create an intersection between objects using the `intersect()` function, or find elements that are in one object but not in another using the `setdiff()` function. Let's see how many unique genera of turtles are in the *Chelidae* clade compared to the entire dataset.
+```{r}
+all.species <- unique(size.meas$Species)  ## how many species in the entire dataset
+length(all.species)
+
+chelidae.species <- unique(chelidae.logical$Species)  ## how many Chelidae species
+length(chelidae.species)
+
+intersect.species <- intersect(all.species, chelidae.species)  ## species in both
+length(intersect.species)
+
+setdiff.species <- setdiff(all.species, chelidae.species)  ## species not in Chelidae
+length(setdiff.species)
+```

@@ -25,5 +25,20 @@
   },
   "quarto.qmd": {
     "quarto.html": "cb4ea000"
+  },
+  "subsetting.qmd": {
+    "subsetting.html": "05b351c2"
+  },
+  "plotBasics.qmd": {
+    "plotBasics.html": "9e8360f1"
+  },
+  "colors.qmd": {
+    "colors.html": "dbe36777"
+  },
+  "savingPlots.qmd": {
+    "savingPlots.html": "8f753fc9"
+  },
+  "boxplotsHistograms.qmd": {
+    "boxplotsHistograms.html": "6f95bd7d"
   }
 }

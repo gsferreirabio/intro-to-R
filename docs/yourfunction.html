@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./subsetting.qmd" rel="next">
+<link href="./subsetting.html" rel="next">
 <link href="./functions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -194,8 +194,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Writing your functions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subsetting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subsetting</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plotBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of plotting in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./boxplotsHistograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boxplots and histograms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./colors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colors in plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./savingPlots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Saving plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Maps in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylog.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phylogenies in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating documents with R</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -226,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Maybe you want to automatize a process for which you cannot find an already written function, or maybe you want to customize a function to your needs. R enables you to write your own functions using <em>function()</em> and defining the set of steps that will be performed by this function. Of course, they can be stored in objects, which will then be treated as the names of your functions.</p>
+<p>Maybe you want to automatize a process for which you cannot find an already written function, or maybe you want to customize a function to your needs. R enables you to write your own functions using <code>function()</code> and defining the set of steps that will be performed by this function. Of course, they can be stored in objects, which will then be treated as the names of your functions.</p>
 <p>Let’s create a function to calculate the median of a distribution. The <strong>median</strong> is a value that separates the distribution in half. In a distribution with an odd number of elements, the element in the center of this distribution (when sorted from minimum to maximum or the opposite) is the median.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>odd.dist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
@@ -280,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 5</code></pre>
 </div>
 </div>
-<p>Now we can put all those steps together in a single function and use it to calculate the median of the <em>new.seq</em> and the <em>even.dist</em> objects.</p>
+<p>Now we can put all those steps together in a single function and use it to calculate the median of the <code>new.seq</code> and the <code>even.dist</code> objects.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>calculate.median <span class="ot">&lt;-</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) {</span>
@@ -301,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 5</code></pre>
 </div>
 </div>
-<p>Finally, you might want to save this function so that you can load it in another script, without the need to rewriting it all over. To <em>save</em> and <em>load</em> a function (or any object, actually), use:</p>
+<p>Finally, you might want to save this function so that you can load it in another script, without the need to rewriting it all over. To <code>save()</code> and <code>load()</code> a function (or any object, actually), use:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(calculate.median, <span class="at">file =</span> <span class="st">"calculate.median.R"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -719,8 +789,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./subsetting.qmd" class="pagination-link" aria-label="">
-        <span class="nav-page-text"></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./subsetting.html" class="pagination-link" aria-label="Subsetting">
+        <span class="nav-page-text">Subsetting</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -12,7 +12,7 @@ Everything you type in the script can be interpreted either as code, unless you 
 2 + 2
 ```
 
-Code should be thought and written in a self-explanatory manner. But, at least when you are learning, commenting your code will be very helpfult to remember what (and how) you did before. It is also **very** useful to keep a cohesive and clean code. Use for example a series of hashtags (#) to create section breakers with titles, and also try to avoid very long lines, breaking the code when possible.
+Code should be thought and written in a self-explanatory manner. But, at least when you are learning, commenting your code will be very helpful to remember what (and how) you did before. It is also **very** useful to keep a cohesive and clean code. Use for example a series of hashtag (`#`) to create section breakers with titles, and also try to avoid very long lines, breaking the code when possible.
 
 ```{r, eval = FALSE}
 ################################################################################

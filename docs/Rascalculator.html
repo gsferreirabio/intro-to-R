@@ -194,8 +194,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Writing your functions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subsetting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subsetting</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plotBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of plotting in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./boxplotsHistograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boxplots and histograms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./colors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colors in plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./savingPlots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Saving plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Maps in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylog.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phylogenies in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating documents with R</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -277,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<p>R deals with large numbers using the <em>e</em> character followed by the number of positions the decimal point will move. If the number is positive, the decimal point moves to the right; if negative it moves to the left.</p>
+<p>R deals with large numbers using the <code>e</code> character followed by the number of positions the decimal point will move. If the number is positive, the decimal point moves to the right; if negative it moves to the left.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.2e3</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -290,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="logical-operators" class="level3">
 <h3 class="anchored" data-anchor-id="logical-operators">Logical operators</h3>
-<p>Boolean algebra (operations that return <em>True</em> or <em>False</em> values) can be done using the == (double equal signs = “<em>equals to</em>”) and != (“not” operator (!) followed by equal sign = “<em>differs from</em>”) logical operators:</p>
+<p>Boolean algebra (operations that return <code>TRUE</code> or <code>FALSE</code> values) can be done using the <code>==</code> (double equal signs = “<em>equals to</em>”) and <code>!=</code> (“not” operator (!) followed by equal sign = “<em>differs from</em>”) logical operators:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -309,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>The returned values from Boolean operations are TRUE and FALSE (always in capital letters), which can also be expressed by the single capital letters T and F, respectively.</p>
+<p>The returned values from Boolean operations are <code>TRUE</code> and <code>FALSE</code> (always in capital letters), which can also be expressed by the single capital letters <code>T</code> and <code>F</code>, respectively.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>T <span class="sc">==</span> <span class="cn">TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -320,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>“Greater than” (&gt;), “smaller than or equal to” (&lt;=), “and” (&amp;), “or” (|) are all logical operators that can be used in R.</p>
+<p>“Greater than” (<code>&gt;</code>), “smaller than or equal to” (<code>&lt;=</code>), “and” (<code>&amp;</code>), “or” (<code>|</code>) are all logical operators that can be used in R.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">3</span>  <span class="do">## 1 and 2 are greater than 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -334,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="additional-signs" class="level3">
 <h3 class="anchored" data-anchor-id="additional-signs">Additional signs</h3>
-<p>Two dots (:) can be used to create a sequence.</p>
+<p>Two dots (<code>:</code>) can be used to create a sequence.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -345,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 2.5 3.5 4.5 5.5</code></pre>
 </div>
 </div>
-<p>And the modulo operation (the remainder of a division) can be done using “%%”:</p>
+<p>And the modulo operation (the remainder of a division) can be done using <code>%%</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">%%</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -359,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="missing-and-null-values" class="level3">
 <h3 class="anchored" data-anchor-id="missing-and-null-values">Missing and null values</h3>
-<p>Missing values in R are represented by the special object <strong>NA</strong> (“not available”). NAs reserve space in a vector, which is important to keep the original dimensions, but they can be very annoying when using some functions. We will see how to identify and deal with them in the <a href="./functions.html">Functions</a> section. On the other hand, the special object <strong>NULL</strong> represents the absence of a value and indicates that an object contains no data. It can be used for example to create an object that will be fill with values later in a function to to remove the content of a preexisting object.</p>
+<p>Missing values in R are represented by the special object <code>NA</code> (“not available”). <code>NAs</code> reserve space in a vector, which is important to keep the original dimensions, but they can be very annoying when using some functions. We will see how to identify and deal with them in the <a href="./functions.html">Functions</a> section. On the other hand, the special object <code>NULL</code> represents the absence of a value and indicates that an object contains no data. It can be used for example to create an object that will be fill with values later in a function to to remove the content of a preexisting object.</p>
 
 
 </section>

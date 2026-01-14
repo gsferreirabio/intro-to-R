@@ -20,7 +20,24 @@ website:
           - href: functions.qmd
           - href: yourfunction.qmd
           - href: subsetting.qmd
-          - href: quarto.qmd
+      - section: "Data visualization"
+        contents:
+          - href: plotBasics.qmd
+          - href: boxplotsHistograms.qmd
+          - href: colors.qmd
+          - href: savingPlots.qmd
+      - section: "Data analysis"
+        contents:
+          - href: tTests.qmd
+          - href: corReg.qmd
+          - href: anova.qmd
+          - href: ordination.qmd
+      - text: "Creating Maps in R"
+        href: maps.qmd
+      - text: "Phylogenies in R"
+        href: phylog.qmd
+      - text: "Creating documents with R"
+        href: quarto.qmd
 
 
 format:

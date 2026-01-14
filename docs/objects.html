@@ -194,8 +194,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Writing your functions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subsetting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Subsetting</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plotBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of plotting in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./boxplotsHistograms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boxplots and histograms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./colors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colors in plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./savingPlots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Saving plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Maps in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylog.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phylogenies in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating documents with R</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -226,8 +296,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Of course R is more than a simple calculator. The great benefit of using such a language is being able to store the results of an operation into a variable (or an <em>object</em>) that can be used later in some subsequent operation or passed as an argument in a function. In R you can do that using either “&lt;-” (which passes the value from the right to the left; shortcut: <em>Alt</em> + <em>-</em>) or the “=”. They have the same effect, but keeping the usage of “=” for operations or passing a value as an argument and “&lt;-” for storing values in an object is usually better seen. Whatever you choose to use, keep it consistent.</p>
-<p>An <strong>object</strong> in R is stored in the environment and can be accessed by just typing its name. An object can store anything, a number, a character string, a vector or list, a matrix or data frame, even functions. Keep in mind that <strong>R is case-sensitive</strong>! The <em>class</em> of an object can be checked using the class() function.</p>
+<p>Of course R is more than a simple calculator. The great benefit of using such a language is being able to store the results of an operation into a variable (or an <code>object</code>) that can be used later in some subsequent operation or passed as an argument in a function. In R you can do that using either <code>&lt;-</code> (which passes the value from the right to the left; shortcut: <em>Alt</em> + <em>-</em>) or the <code>=</code>. They have the same effect, but keeping the usage of <code>=</code> for operations or passing a value as an argument and <code>&lt;-</code> for storing values in an object is usually better seen. Whatever you choose to use, keep it consistent.</p>
+<p>An <strong>object</strong> in R is stored in the environment and can be accessed by just typing its name. An object can store anything, a number, a character string, a vector or list, a matrix or data frame, even functions. Keep in mind that <strong>R is case-sensitive</strong>! The <em>class</em> of an object can be checked using the <code>class()</code> function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">=</span> <span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">1</span></span>
@@ -262,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "function"</code></pre>
 </div>
 </div>
-<p>Operations can be done with objects instead of numbers (such as Y == y above). You can also combine objects into different objects. For example, to create a matrix (2-dimensions object), you can combine two vectors (1D objects) using functions like <strong>rbind</strong> or <strong>cbind</strong> (check their <em>Help</em> pages using <em>?rbind</em>. Check also the function <em>c()</em>).</p>
+<p>Operations can be done with objects instead of numbers (such as <code>Y == y</code> above). You can also combine objects into different objects. For example, to create a matrix (2-dimensions object), you can combine two vectors (1D objects) using functions like <code>rbind()</code> or <code>cbind()</code> (check their <em>Help</em> pages using <code>?rbind</code>. Check also the function <code>c()</code>).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>vec<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>vec<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
@@ -290,7 +360,7 @@ vec.2    3    5    7</code></pre>
 <pre><code>[1] FALSE FALSE  TRUE</code></pre>
 </div>
 </div>
-<p>There is another class of objects in R called data frames that are used a lot by many functions due to its capacity of storing different data types and to have your dimensions changed after creation. For example, you cannot have one column with character strings and another with numbers in a matrix (it will convert the columns to the same type), but you can have that with a data frame. You can access single columns, rows or cells by using the row and/or column number between square brackets.</p>
+<p>There is another class of objects in R called <code>data frames</code> that are used a lot by many functions due to its capacity of storing different data types and to have your dimensions changed after creation. For example, you cannot have one column with character strings and another with numbers in a matrix (it will convert the columns to the same type), but you can have that with a data frame. You can access single columns, rows or cells by using the row and/or column number between square brackets.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>vec<span class="fl">.3</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(vec<span class="fl">.3</span>, vec<span class="fl">.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -317,7 +387,7 @@ vec.2    3    5    7</code></pre>
 <pre><code>[1] 3 5 7</code></pre>
 </div>
 </div>
-<p>A nice feature of a data frame is giving names to its columns and then calling them using the <em>$</em> sign.</p>
+<p>A nice feature of a data frame is giving names to its columns and then calling them using the <code>$</code> sign.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"characters"</span>, <span class="st">"numbers"</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>characters</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -327,6 +397,29 @@ vec.2    3    5    7</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>numbers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 5 7</code></pre>
+</div>
+</div>
+<p>Another type of objects in R is called <code>factors</code>. Factors are categorical variables that can take a limited number of values (levels). Factors are useful in statistical modeling because they allow R to treat categorical variables appropriately. You can create a factor using the <code>factor()</code> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>obj.colors <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"white"</span>, <span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"pink"</span>, <span class="st">"white"</span>)) </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(obj.colors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+<p>Factors have levels, which are the unique values that the factor can take. The number of levels is not the same as the number of positions in a factor object, because a value can be repeated in more than one position.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(obj.colors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(obj.colors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "black" "pink"  "white"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(obj.colors)  <span class="do">## nlevels() gives the number of levels, same as length(levels())</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
 </div>
 </div>
 
