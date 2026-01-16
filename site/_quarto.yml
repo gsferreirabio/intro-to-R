@@ -32,8 +32,10 @@ website:
           - href: corReg.qmd
           - href: anova.qmd
           - href: ordination.qmd
-      - text: "Creating Maps in R"
-        href: maps.qmd
+      - section: "Creating Maps in R"
+        contents:
+          - href: maps.qmd
+          - href: occurrences.qmd
       - text: "Phylogenies in R"
         href: phylog.qmd
       - text: "Creating documents with R"
