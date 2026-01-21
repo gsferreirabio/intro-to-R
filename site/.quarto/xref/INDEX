@@ -43,5 +43,11 @@
   },
   "maps.qmd": {
     "maps.html": "e96c03b6"
+  },
+  "ocurrences.qmd": {
+    "ocurrences.html": "aff77f78"
+  },
+  "paleomaps.qmd": {
+    "paleomaps.html": "7829c4d3"
   }
 }
