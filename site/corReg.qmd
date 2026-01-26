@@ -1,0 +1,14 @@
+---
+title: "Correlations and regressions"
+---
+
+## Correlation
+
+Correlation is a statistical measure that can be used to test and describe the extent to which two continuous variables change together. It quantifies the strength and direction of the linear relationship between the variables. The correlation coefficient, often denoted as "r", ranges from -1 to +1. A value of +1 indicates a perfect positive correlation, meaning that as one variable increases, the other variable also increases proportionally. A value of -1 indicates a perfect negative correlation, meaning that as one variable increases, the other variable decreases proportionally. A value of 0 indicates no correlation, meaning there is no linear relationship between the variables.
+
+
+Regression is a statistical method used to examine the relationship between a dependent (response) variable and one or more independent (explanatory) variables, when they are both continues. It helps us understand how changes in the independent variables are associated with changes in the dependent variable. There are different types of regression, including linear regression, multiple regression, and logistic regression, each suited for different types of data and research questions. Here we will cover only linear regressions, which is the simplest and most frequently used type.
+
+The basic function of regressions analyses is to estimate parameter values and their standard errors using the data available. The first step is to select a model to describe the relationship between the dependent and independent variables. The most common model is the linear model, which assumes a straight-line relationship between the variables. The general equation for a simple linear regression is:
+
+`y = a + bx` where `y` is the dependent variable, `a` is the intercept (the value of `y` when `x` is 0), `b` is the slope (the change in `y` for a one-unit change in `x`), and `x` is the independent variable.
