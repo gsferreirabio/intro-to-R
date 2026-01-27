@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -254,6 +289,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#correlation" id="toc-correlation" class="nav-link active" data-scroll-target="#correlation">Correlation</a></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
   </ul>
 </nav>
     </div>
@@ -282,9 +318,127 @@ ul.task-list li input[type="checkbox"] {
 <section id="correlation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
 <p>Correlation is a statistical measure that can be used to test and describe the extent to which two continuous variables change together. It quantifies the strength and direction of the linear relationship between the variables. The correlation coefficient, often denoted as “r”, ranges from -1 to +1. A value of +1 indicates a perfect positive correlation, meaning that as one variable increases, the other variable also increases proportionally. A value of -1 indicates a perfect negative correlation, meaning that as one variable increases, the other variable decreases proportionally. A value of 0 indicates no correlation, meaning there is no linear relationship between the variables.</p>
+<p>Correlation is defined in terms of the variance of x, the variance of y, and the covariance of x and y, that is, the way they vary together. The formula to obtain the correlation between x and y is the covariance between x and y, divided by the square root of the variance of x times the variance of y:</p>
+<p><code>correlation_coefficient = cov(x, y) / sqrt(var(x) * var(y))</code></p>
+<p>Let’s check whether there is a correlation between the <code>SCL</code> and <code>SCm</code> variables in the Ferreira et al.&nbsp;(2024) dataset. We will need to remove any observations containing <code>NAs</code> in either variable before checking for correlation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only the rows with complete cases for both SCm and SCL</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SCm.SCL <span class="ot">&lt;-</span> F24.size[<span class="fu">complete.cases</span>(F24.size<span class="sc">$</span>SCm, F24.size<span class="sc">$</span>SCL), <span class="fu">c</span>(<span class="st">"SCm"</span>, <span class="st">"SCL"</span>, <span class="st">"Clade"</span>)]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(SCm.SCL)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate covariance between SCm and SCL</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(SCm, SCL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4036.496</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate variance of SCm and SCL (separately)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(SCm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 842.2108</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(SCL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24748.29</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the correlation coefficient using the formula</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>correlation_coefficient <span class="ot">&lt;-</span> <span class="fu">cov</span>(SCm, SCL) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(SCm) <span class="sc">*</span> <span class="fu">var</span>(SCL))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>correlation_coefficient</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8841411</code></pre>
+</div>
+</div>
+<p>There is of course a function to calculate the correlation coefficient implemented in the <code>stats</code> R package, which is <code>cor()</code>. Let’s confirm the results are the same as using the formula above:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(SCm, SCL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8841411</code></pre>
+</div>
+</div>
+<p>Finally, it is also possible to statistically test for a correlation between two variables and to determine the significance of such correlation. This can be done using the <code>cor.test()</code> function. Check the help page for more details on how to use this function, particularly regarding the different methods available (Pearson, Spearman, Kendall) and for using more complex formulas. Here we will use the default method (Pearson):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(SCm, SCL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  SCm and SCL
+t = 29.861, df = 249, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.8537893 0.9085031
+sample estimates:
+      cor 
+0.8841411 </code></pre>
+</div>
+</div>
+<p>The output of the <code>cor.test()</code> function provides several pieces of information, including the correlation coefficient, the p-value, and the confidence interval for the correlation coefficient. A low p-value (less than 0.05) indicates that the correlation is statistically significant.</p>
+</section>
+<section id="regression" class="level2">
+<h2 class="anchored" data-anchor-id="regression">Regression</h2>
 <p>Regression is a statistical method used to examine the relationship between a dependent (response) variable and one or more independent (explanatory) variables, when they are both continues. It helps us understand how changes in the independent variables are associated with changes in the dependent variable. There are different types of regression, including linear regression, multiple regression, and logistic regression, each suited for different types of data and research questions. Here we will cover only linear regressions, which is the simplest and most frequently used type.</p>
 <p>The basic function of regressions analyses is to estimate parameter values and their standard errors using the data available. The first step is to select a model to describe the relationship between the dependent and independent variables. The most common model is the linear model, which assumes a straight-line relationship between the variables. The general equation for a simple linear regression is:</p>
 <p><code>y = a + bx</code> where <code>y</code> is the dependent variable, <code>a</code> is the intercept (the value of <code>y</code> when <code>x</code> is 0), <code>b</code> is the slope (the change in <code>y</code> for a one-unit change in <code>x</code>), and <code>x</code> is the independent variable.</p>
+<p>To perform a linear regression in R, we can use the <code>lm()</code> function. Let’s use the <code>SCm</code> as the dependent variable and <code>SCL</code> as the independent variable from the Ferreira et al.&nbsp;(2024) dataset and use the function <code>summary()</code> to view the results of the regression analysis:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(SCm <span class="sc">~</span> SCL, <span class="at">data =</span> SCm.SCL)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = SCm ~ SCL, data = SCm.SCL)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-59.497  -6.389  -1.774   4.701  67.568 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1.891870   1.697558   1.114    0.266    
+SCL         0.163102   0.005462  29.861   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.59 on 249 degrees of freedom
+Multiple R-squared:  0.7817,    Adjusted R-squared:  0.7808 
+F-statistic: 891.7 on 1 and 249 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The output of the <code>summary()</code> function provides several pieces of information, including the coefficients (intercept and slope), their standard errors, t-values, and p-values. The R-squared value indicates the proportion of variance in the dependent variable that can be explained by the independent variable. To visualize the regression line along with the data points, we can use the <code>plot()</code> function to create a scatter plot and then add the regression line using the <code>abline()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> SCL,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> SCm,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Skull vs. carapace length in turtles"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Carapace length (SCL)"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Skull lenght (SCm)"</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"l"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add the regression line</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(linear_model, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="corReg_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Regression formulas can also be used to predict values of <code>y</code> based on new values of <code>x</code>. For example, let’s predict the value of <code>SCm</code> when <code>SCL = 645</code> using the <code>stats</code> function <code>predict()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data frame with the new value of SCL</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>new.SCm <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">SCL =</span> <span class="dv">645</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(linear_model, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">newdata =</span> new.SCm, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       fit      lwr      upr
+1 107.0927 102.7015 111.4839</code></pre>
+</div>
+</div>
+<p>The output provides the predicted value of <code>SCm</code> along with the lower and upper bounds of the confidence interval (defined with the argument <code>interval</code> of the <code>predict()</code> function) for the prediction.</p>
 
 
 </section>

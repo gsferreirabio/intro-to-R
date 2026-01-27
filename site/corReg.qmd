@@ -6,9 +6,89 @@ title: "Correlations and regressions"
 
 Correlation is a statistical measure that can be used to test and describe the extent to which two continuous variables change together. It quantifies the strength and direction of the linear relationship between the variables. The correlation coefficient, often denoted as "r", ranges from -1 to +1. A value of +1 indicates a perfect positive correlation, meaning that as one variable increases, the other variable also increases proportionally. A value of -1 indicates a perfect negative correlation, meaning that as one variable increases, the other variable decreases proportionally. A value of 0 indicates no correlation, meaning there is no linear relationship between the variables.
 
+Correlation is defined in terms of the variance of x, the variance of y, and the covariance of x and y, that is, the way they vary together. The formula to obtain the correlation between x and y is the covariance between x and y, divided by the square root of the variance of x times the variance of y:
+
+`correlation_coefficient = cov(x, y) / sqrt(var(x) * var(y))`
+
+Let's check whether there is a correlation between the `SCL` and `SCm` variables in the Ferreira et al. (2024) dataset. We will need to remove any observations containing `NAs` in either variable before checking for correlation. 
+
+```{r}
+#| echo: false
+setwd("d:/R Projects/Intro-to-R/datasets/Ferreira_etal-2024")
+F24.size <- read.csv("size-meas.csv", sep = ",", header = TRUE)
+```
+
+```{r}
+# keep only the rows with complete cases for both SCm and SCL
+SCm.SCL <- F24.size[complete.cases(F24.size$SCm, F24.size$SCL), c("SCm", "SCL", "Clade")]
+attach(SCm.SCL)
+
+# calculate covariance between SCm and SCL
+cov(SCm, SCL)
+
+# calculate variance of SCm and SCL (separately)
+var(SCm)
+var(SCL)
+
+# calculate the correlation coefficient using the formula
+correlation_coefficient <- cov(SCm, SCL) / sqrt(var(SCm) * var(SCL))
+correlation_coefficient
+```
+
+There is of course a function to calculate the correlation coefficient implemented in the `stats` R package, which is `cor()`. Let's confirm the results are the same as using the formula above:
+```{r}
+cor(SCm, SCL)
+```
+
+Finally, it is also possible to statistically test for a correlation between two variables and to determine the significance of such correlation. This can be done using the `cor.test()` function. Check the help page for more details on how to use this function, particularly regarding the different methods available (Pearson, Spearman, Kendall) and for using more complex formulas. Here we will use the default method (Pearson):
+
+```{r}
+cor.test(SCm, SCL)
+```
+The output of the `cor.test()` function provides several pieces of information, including the correlation coefficient, the p-value, and the confidence interval for the correlation coefficient. A low p-value (less than 0.05) indicates that the correlation is statistically significant.
+
+
+## Regression
 
 Regression is a statistical method used to examine the relationship between a dependent (response) variable and one or more independent (explanatory) variables, when they are both continues. It helps us understand how changes in the independent variables are associated with changes in the dependent variable. There are different types of regression, including linear regression, multiple regression, and logistic regression, each suited for different types of data and research questions. Here we will cover only linear regressions, which is the simplest and most frequently used type.
 
 The basic function of regressions analyses is to estimate parameter values and their standard errors using the data available. The first step is to select a model to describe the relationship between the dependent and independent variables. The most common model is the linear model, which assumes a straight-line relationship between the variables. The general equation for a simple linear regression is:
 
 `y = a + bx` where `y` is the dependent variable, `a` is the intercept (the value of `y` when `x` is 0), `b` is the slope (the change in `y` for a one-unit change in `x`), and `x` is the independent variable.
+
+To perform a linear regression in R, we can use the `lm()` function. Let's use the `SCm` as the dependent variable and `SCL` as the independent variable from the Ferreira et al. (2024) dataset and use the function `summary()` to view the results of the regression analysis:
+
+```{r}
+linear_model <- lm(SCm ~ SCL, data = SCm.SCL)
+summary(linear_model)
+```
+
+The output of the `summary()` function provides several pieces of information, including the coefficients (intercept and slope), their standard errors, t-values, and p-values. The R-squared value indicates the proportion of variance in the dependent variable that can be explained by the independent variable.
+To visualize the regression line along with the data points, we can use the `plot()` function to create a scatter plot and then add the regression line using the `abline()` function:
+```{r}
+plot(x = SCL,
+     y = SCm,
+     main = "Skull vs. carapace length in turtles",
+     xlab = "Carapace length (SCL)",
+     ylab = "Skull lenght (SCm)", 
+     bty = "l",
+     pch = 16,
+     col = rgb(0,0,0,0.5))
+
+# add the regression line
+abline(linear_model, col = "red", lwd = 2)
+```
+
+Regression formulas can also be used to predict values of `y` based on new values of `x`. For example, let's predict the value of `SCm` when `SCL = 645` using the `stats` function `predict()`:
+
+```{r}
+# create a data frame with the new value of SCL
+new.SCm = data.frame(SCL = 645)
+
+pred <- predict(linear_model, 
+                newdata = new.SCm, 
+                interval = "confidence")
+pred
+```
+
+The output provides the predicted value of `SCm` along with the lower and upper bounds of the confidence interval (defined with the argument `interval` of the `predict()` function) for the prediction.
